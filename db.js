@@ -10,13 +10,18 @@ const taskManagerSchema = mongoose.Schema({
   status: Boolean,
 });
 
-mongoose
-  .connect(url, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-    useCreateIndex: true,
-  })
-  .then((result) => console.log("Connected to MongoDB"))
-  .catch((error) => console.log(error));
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(url, {
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+    });
+    console.log("Connected to MongoDB");
+  } catch (error) {
+    console.log(`Error: ${error}`);
+  }
+};
+
+connectDB();
 
 module.exports = mongoose.model("taskManager", taskManagerSchema);
