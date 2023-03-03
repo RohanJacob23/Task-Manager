@@ -10,6 +10,12 @@ const taskManagerSchema = mongoose.Schema({
   status: Boolean,
 });
 
-mongoose.connect(url).then((result) => console.log("Connected to MongoDB"));
+mongoose
+  .connect(url, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true,
+  })
+  .then((result) => console.log("Connected to MongoDB"));
 
 module.exports = mongoose.model("taskManager", taskManagerSchema);
