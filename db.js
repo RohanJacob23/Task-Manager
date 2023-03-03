@@ -16,6 +16,7 @@ mongoose
     useNewUrlParser: true,
     useCreateIndex: true,
   })
-  .then((result) => console.log("Connected to MongoDB"));
+  .then((result) => console.log("Connected to MongoDB"))
+  .catch((error) => console.log(error));
 
 module.exports = mongoose.model("taskManager", taskManagerSchema);
